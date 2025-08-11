@@ -1,6 +1,7 @@
 
 export default function Home() {
   return (
-  <div>Hello from develop</div>
+  <div>Hello from develop branch</div>
+
   );
 }
