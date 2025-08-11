@@ -7,7 +7,7 @@ const Movie = () => {
     
     return (
         <>
-        <Header title="Film Focus" />
+        
           <div className=" bg-gray-800">
            {moviedata.map((item,index) => <MovieDescription key={index} {...item} />)}      
         </div>
