@@ -1,6 +1,10 @@
+import Header from "../components/Header"
+
 const Favourites = () => {
     return (
-        <div>Favourites</div>
+        <>
+        <Header title="My Picks" />
+        </>
     )
 }
 
