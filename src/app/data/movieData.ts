@@ -145,6 +145,7 @@ export const moviedata: movieDataType[] = [
     description:
       "Ridley Scott’s 'Gladiator' is an epic tale of betrayal, revenge, and honor in ancient Rome. General Maximus Decimus Meridius is betrayed by the corrupt Emperor Commodus, who murders his family and seizes the throne. Stripped of his title and sold into slavery, Maximus rises as a gladiator, fighting his way toward vengeance. With breathtaking battle scenes, emotional depth, and Russell Crowe’s commanding performance, 'Gladiator' is a timeless story of resilience, justice, and the human spirit."
   },
+ 
   {
     icon: 'movieicon.png',
     movieName: 'Us',

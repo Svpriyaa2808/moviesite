@@ -3,6 +3,22 @@
 import { movieDataType } from "@/app/utils/types"
 import { useState } from "react";
 
+
+// interface MovieDescriptionProps extends movieDataType {
+//     handleFav:(movieName:string)=>void
+// }
+// const MovieDescription = ({icon, movieName, releaseYear, genre}: movieDataType) => {
+//     const[fav,setFav] = useState<string>("unfavourite_icon.png")
+    
+//     const addFav = () => {
+//         if(fav === "unfavourite_icon.png"){
+//             setFav("favourite_icon.png")
+//         }else {
+//             setFav("unfavourite_icon.png")
+//         }
+        
+//     }
+
 interface MovieDescriptionProps extends movieDataType {
     addFav: (movieName: string) => void
     handleIcon: string
