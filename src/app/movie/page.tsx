@@ -29,22 +29,23 @@ const Movie = () => {
         const exists = favArray.some((m) => m.movieName === movieName);
 
         if (!exists) {
-
             const newFavs = [...favArray, ...FavArrayList(movieName)]; // Make sure FavArrayList returns movieDataType
             setFavArray(newFavs);
+             localStorage.setItem("movie",JSON.stringify(FavArrayList(movieName)))
             console.log(newFavs)
+            
         } else {
             const newFavs = favArray.filter((m) => m.movieName !== movieName);
             setFavArray(newFavs);
             console.log(newFavs)
         }
     }
-    const getIconForMovie = (movieName: string) => {
-        const isFav = favArray.some(m => m.movieName === movieName);
+    const getIconForMovie = (movie: movieDataType) => {
+        const isFav = favArray.some(m => m.movieName === movie.movieName);
+       
         return isFav ? "favourite_icon.png" : "unfavourite_icon.png";
+        
     };
-
-
     return (
         <>
 
@@ -66,10 +67,10 @@ const Movie = () => {
             <button className="bg-gray-800 text-white cursor-pointer p-6 min-w-[150px] text-[20px] font-bold rounded-2xl" onClick={handleClear}>Back</button>
         </div>
             <div className="flex flex-col lg:flex-row flex-wrap bg-gray-800">
-                {genreMovieList && genreMovieList.map((item: movieDataType, index: number) => <MovieDescription key={index} {...item} handleIcon={getIconForMovie(item.movieName)} addFav={assignFav} />)}
+                {genreMovieList && genreMovieList.map((item: movieDataType, index: number) => <MovieDescription key={index} {...item} handleIcon={getIconForMovie(item)} addFav={assignFav} />)}
 
                 {!genreMovieList &&
-                    moviedata.map((item: movieDataType, index: number) => <MovieDescription key={index} {...item} handleIcon={getIconForMovie(item.movieName)} addFav={assignFav} />)
+                    moviedata.map((item: movieDataType, index: number) => <MovieDescription key={index} {...item} handleIcon={getIconForMovie(item)} addFav={assignFav} />)
                 }
             </div>
 
