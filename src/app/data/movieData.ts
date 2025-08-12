@@ -129,3 +129,11 @@ export const moviedata:movieDataType[] = [
   }
 ]
 
+export const filteredGenres = [...new Set(moviedata.map(movie => movie.genre))]
+console.log(filteredGenres)
+
+export const FilterByGenre = (selectedGenre:string):movieDataType[] => {
+  return moviedata.filter((movie)=>movie.genre === selectedGenre )
+}
+
+console.log(FilterByGenre("Romantic"))
