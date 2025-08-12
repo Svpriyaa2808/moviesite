@@ -1,14 +1,9 @@
-import Header from "../components/Header"
-import { movieDataType } from "../utils/types"
-
-
-
-const Favourites = ({icon, movieName, releaseYear, genre}:movieDataType) => {
+const Favourites = () => {
     
 
     return (
         <>
-            <h4>{movieName}</h4>
+            <h4>Favourites</h4>
         </>
     )
 }
