@@ -12,7 +12,7 @@ const Movie = () => {
     const addFav = (movieName:string) => {
         const newArray = favMovieArray(movieName);
         setFavMovie([...favMovie,...newArray])
-        console.log(newArray)
+        console.log(favMovie)
     }
 
     const handleFilter = ():void => {
