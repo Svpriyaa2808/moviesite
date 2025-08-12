@@ -30,7 +30,6 @@ const MovieDescription = ({icon, movieName, releaseYear, genre, favourite}: movi
                 <p className="text-[22px] mt-4">Genre:{genre}</p>
                 </div>
                <div className="flex-[20%]">
-            
                 <img className="w-[25%] sm:w-[35%] h-[auto] cursor-pointer m-auto " onClick={addFav}  src={fav} alt="heart_icon"></img>
                  </div>
             
