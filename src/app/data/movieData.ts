@@ -136,4 +136,9 @@ export const FilterByGenre = (selectedGenre:string):movieDataType[] => {
   return moviedata.filter((movie)=>movie.genre === selectedGenre )
 }
 
+
+export const FavArrayList = (chosenitem:string):movieDataType[] => {
+    return moviedata.filter((item) => item.movieName === chosenitem )
+}
+
 console.log(FilterByGenre("Romantic"))
