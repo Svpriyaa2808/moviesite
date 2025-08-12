@@ -8,10 +8,6 @@ interface MovieDescriptionProps extends movieDataType {
     handleIcon: string
 }
 
-// interface MovieDescriptionProps extends movieDataType {
-//     handleFav:(movieName:string)=>void
-// }
-
 const MovieDescription = ({ icon, movieName, releaseYear, genre, favourite, description, addFav, handleIcon }: MovieDescriptionProps) => {
     const [displayDescription, setDisplayDescription] = useState<boolean>(false);
 
