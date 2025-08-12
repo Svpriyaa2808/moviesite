@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
     <Header />
-     <main className="max-w-4xl mx-auto p-6 text-center">
+     <main className="max-w-4xl mx-auto p-6 text-center grow">
       <section className="bg-gray-800 text-amber-50 p-8 rounded-2xl shadow-lg">
         <h2 className="text-4xl font-bold mb-4 text-amber-300">Welcome to Popcorn Picks</h2>
         <p className="text-lg leading-relaxed text-gray-200">
