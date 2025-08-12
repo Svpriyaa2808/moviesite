@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import MovieDescription from "../components/Movie/MovieDescription"
 import { FilterByGenre, filteredGenres, moviedata } from "../data/movieData"
 import { movieDataType } from "../utils/types"
-import Favourites from "../favourites/page"
+import Favourites from "../popcornfacts/page"
 import { FavArrayList } from "@/app/data/movieData"
 
 const Movie = () => {
