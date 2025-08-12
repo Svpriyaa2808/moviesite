@@ -1,11 +1,16 @@
+'use client'
 import { movieDataType } from "@/app/utils/types"
+import { useState } from "react"
 
 interface MovieDescriptionProps extends movieDataType {
     addFav:(movieName:string)=>void
     handleIcon:string
 }
+// interface MovieDescriptionProps extends movieDataType {
+//     handleFav:(movieName:string)=>void
+// }
 
-const MovieDescription = ({icon, movieName, releaseYear, genre, favourite,addFav,handleIcon}: MovieDescriptionProps) => {
+const MovieDescription = ({icon, movieName, releaseYear, genre,addFav,handleIcon}: MovieDescriptionProps) => {
     return(  
         <div className="flex-[45%] m-4 flex flex-col align-center sm:flex-row  rounded-4xl items-center bg-blue-50  p-4">
             <div className="flex-[20%]">
