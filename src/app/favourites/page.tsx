@@ -3,7 +3,7 @@ import { movieDataType } from "../utils/types"
 
 
 
-const Favourites = ({icon, movieName, releaseYear, genre, favourite}:movieDataType) => {
+const Favourites = ({icon, movieName, releaseYear, genre}:movieDataType) => {
     
 
     return (
