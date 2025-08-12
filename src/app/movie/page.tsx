@@ -1,13 +1,20 @@
 'use client'
 import { useEffect, useState } from "react"
 import MovieDescription from "../components/Movie/MovieDescription"
-import { FilterByGenre, filteredGenres, moviedata } from "../data/movieData"
+import { FilterByGenre, filteredGenres, moviedata,favMovieArray} from "../data/movieData"
 import { movieDataType } from "../utils/types"
 
 const Movie = () => {
     const[filterSelected,setFilterSelected] = useState<null|string[]>(null)
     const [genreMovieList,setGenreMovieList] = useState<null| movieDataType[]>(null)
-   
+    const [favMovie, setFavMovie] = useState<movieDataType[]>([])
+
+    const addFav = (movieName:string) => {
+        const newArray = favMovieArray(movieName);
+        setFavMovie([...favMovie,...newArray])
+        console.log(newArray)
+    }
+
     const handleFilter = ():void => {
         filterSelected === null ? setFilterSelected(filteredGenres) : setFilterSelected(null)    
     }
@@ -29,12 +36,15 @@ const Movie = () => {
          {filterSelected && filteredGenres.map((item,index) => <div key={index} onClick={() => chosenGenre(item)}>{item}</div>)}
 
  <div className="flex flex-col lg:flex-row flex-wrap bg-gray-800">
-         {genreMovieList && genreMovieList.map((item:movieDataType,index:number) => <MovieDescription key={index} {...item} />)}
+         {genreMovieList && genreMovieList.map((item:movieDataType,index:number) => <MovieDescription key={index} {...item} handleFav={addFav}/>)}
 
        {!genreMovieList &&
-           moviedata.map((item:movieDataType,index:number) => <MovieDescription key={index} {...item} />)     
+           moviedata.map((item:movieDataType,index:number) => <MovieDescription key={index} {...item} handleFav={addFav}/>)     
          }      
          </div>
+         {favMovie && favMovie.map((item,index)=> <div key={index}>
+            <p>{item.movieName}</p>
+         </div>)}
         </>
     )
 }
