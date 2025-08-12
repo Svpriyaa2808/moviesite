@@ -1,8 +1,9 @@
-const Header = () => {
+const Header = ({title}:{title:string}) => {
     return(
         <>
-        <div>
-        <h1>Welcome to Movie site</h1>   
+        <div className="flex justify-center p-8 items-center bg-gray-800 text-amber-50">
+        <img src="logo.png" width="100px" height="auto" alt="logo" />
+        <h1 className="text-3xl p-8 uppercase">{title}</h1>   
         </div>
         </>
     )

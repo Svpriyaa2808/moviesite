@@ -1,10 +1,8 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 export default function Home() {
   return (
-    <>
-    <Header />
-    </>
+    <div className="bg-gray-800">
+      <h4>homepage</h4>
+    </div>
   
 
   );

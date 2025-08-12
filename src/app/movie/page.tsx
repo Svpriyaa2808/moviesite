@@ -1,6 +1,6 @@
 import MovieDescription from "../components/Movie/MovieDescription"
 import { moviedata } from "../data/movieData"
-import Footer from "../components/Footer"
+
 
 const Movie = () => {
     

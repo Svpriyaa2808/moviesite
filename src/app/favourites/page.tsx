@@ -1,6 +1,10 @@
+import Header from "../components/Header"
+
 const Favourites = () => {
     return (
-        <div>Favourites</div>
+        <>
+        <h4>Favourite</h4>
+        </>
     )
 }
 
