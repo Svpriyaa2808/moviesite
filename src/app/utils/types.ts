@@ -4,4 +4,6 @@ export interface movieDataType
         movieName: string,
         releaseYear : number,
         genre : string,
+        favourite : string,
+        description:string
     }
