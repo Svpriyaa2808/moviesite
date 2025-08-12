@@ -64,6 +64,7 @@ const Movie = () => {
             </div>
             <button className="bg-gray-800 text-white cursor-pointer p-6 min-w-[150px] text-[20px] font-bold rounded-2xl" onClick={handleClear}>Back</button>
         </div>
+
         
         <div className="flex flex-col lg:flex-row flex-wrap bg-gray-800">
             {genreMovieList && genreMovieList.map((item:movieDataType,index:number) => <MovieDescription key={index} {...item} handleIcon={getIconForMovie(item.movieName)} addFav={assignFav} />)}
@@ -72,6 +73,7 @@ const Movie = () => {
                 moviedata.map((item:movieDataType,index:number) => <MovieDescription key={index} {...item} handleIcon={getIconForMovie(item.movieName)} addFav={assignFav}/>)     
             }      
         </div>
+
         </>
     )
 }
