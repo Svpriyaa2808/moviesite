@@ -7,6 +7,7 @@ interface MovieDescriptionProps extends movieDataType {
     addFav: (movieName: string) => void
     handleIcon: string
 }
+
 // interface MovieDescriptionProps extends movieDataType {
 //     handleFav:(movieName:string)=>void
 // }
