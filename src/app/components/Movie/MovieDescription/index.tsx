@@ -5,7 +5,7 @@ import { useState } from "react"
 // interface MovieDescriptionProps extends movieDataType {
 //     handleFav:(movieName:string)=>void
 // }
-const MovieDescription = ({icon, movieName, releaseYear, genre, favourite}: movieDataType) => {
+const MovieDescription = ({icon, movieName, releaseYear, genre}: movieDataType) => {
     const[fav,setFav] = useState<string>("unfavourite_icon.png")
     
     const addFav = () => {
