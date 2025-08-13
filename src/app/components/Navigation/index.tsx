@@ -6,6 +6,7 @@ const Navigation = () => {
             <Link href="/">Home</Link>
             <Link href="/movie">Film Focus</Link>
             <Link href="/favourites">My Pick</Link>
+            <Link href="/popcornfacts">Popcorn Facts 🍿</Link>
         </nav>
     )
 }
