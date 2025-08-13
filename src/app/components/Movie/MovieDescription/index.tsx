@@ -29,17 +29,22 @@ interface MovieDescriptionProps {
 
 const MovieDescription = ({ movie, favSelected, favMovie }: MovieDescriptionProps) => {
     const [displayDescription, setDisplayDescription] = useState<boolean>(false);
+    const [rotate,setRotate] = useState<boolean>(false);
 
     const handleDescription = (desc: string) => {
         setDisplayDescription(true)
     }
+
+ 
 
     const isFavourite = favMovie?.movieName === movie.movieName
     return (
         <>
             <div className="flex-[45%] m-4 flex flex-col align-center md:flex-row  rounded-4xl items-center bg-blue-50  p-4">
                 <div className="flex-[20%]">
-                    <img className="w-[50%] sm:w-[100%] h-[auto] m-auto sm:ml-8" src={movie.icon} alt={movie.movieName} width={500} height={100} />
+                    <img className={`w-[50%] sm:w-[100%] h-[auto] m-auto sm:ml-8 transition-transform duration-500 ${rotate ? "rotate-360" : ""}`} 
+                    src={movie.icon} onMouseEnter={() => setRotate(true)} onMouseLeave={() => setRotate(false)}
+                     alt={`${movie.movieName} ${rotate ? "rotated" : "not-rotated"}`} width={500} height={100} />
                 </div>
                 <div className="flex-[60%] mt-4 sm:mt-8 px-0 py-4 sm:py-8 text-center">
                     <h4 className="font-bold text-2xl uppercase" onClick={() => handleDescription("true")}>{movie.movieName}</h4>
