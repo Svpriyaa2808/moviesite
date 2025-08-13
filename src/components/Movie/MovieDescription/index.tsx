@@ -40,7 +40,7 @@ const MovieDescription = ({ movie, favSelected, favMovie }: MovieDescriptionProp
     const isFavourite = favMovie?.movieName === movie.movieName
     return (
         <>
-            <div className="flex-[45%] m-4 flex flex-col align-center md:flex-row  rounded-4xl items-center bg-blue-50  p-4">
+            <div data-testid="movie" className="flex-[45%] m-4 flex flex-col align-center md:flex-row  rounded-4xl items-center bg-blue-50  p-4">
                 <div className="flex-[20%]">
                     <img className={`w-[50%] sm:w-[100%] h-[auto] m-auto sm:ml-8 transition-transform duration-500 ${rotate ? "rotate-360" : ""}`} 
                     src={movie.icon} onMouseEnter={() => setRotate(true)} onMouseLeave={() => setRotate(false)}
