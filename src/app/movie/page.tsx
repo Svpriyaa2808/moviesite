@@ -9,7 +9,13 @@ import { FavArrayList } from "@/app/data/movieData"
 const Movie = () => {
     const [filterSelected, setFilterSelected] = useState<null | string[]>(null)
     const [genreMovieList, setGenreMovieList] = useState<null | movieDataType[]>(null)
-    const [favArray, setFavArray] = useState<[] | movieDataType[]>([])
+    // const [favArray, setFavArray] = useState<[] | movieDataType[]>([])
+     const[isActive,setIsActive] = useState<movieDataType | null>(null)   
+    
+    const assignFav = (movie:movieDataType) => {
+        setIsActive(movie)
+        localStorage.setItem("movie",JSON.stringify(movie))
+    }
 
     const handleFilter = (): void => {
         filterSelected === null ? setFilterSelected(filteredGenres) : setFilterSelected(null)
@@ -25,31 +31,37 @@ const Movie = () => {
         setGenreMovieList(null)
     }
 
-    const assignFav = (movieName: string) => {
-        const exists = favArray.some((m) => m.movieName === movieName);
+   
+    // const assignFav = (movieName: string) => {
+    //     const exists = favArray.some((m) => m.movieName === movieName);
 
-        if (!exists) {
-            const newFavs = [...favArray, ...FavArrayList(movieName)]; // Make sure FavArrayList returns movieDataType
-            setFavArray(newFavs);
-             localStorage.setItem("movie",JSON.stringify(FavArrayList(movieName)))
-            console.log(newFavs)
+    //     if (!exists) {
+    //         const newFavs = [...favArray, ...FavArrayList(movieName)]; // Make sure FavArrayList returns movieDataType
+    //         setFavArray(newFavs);
             
-        } else {
-            const newFavs = favArray.filter((m) => m.movieName !== movieName);
-            setFavArray(newFavs);
-            console.log(newFavs)
-        }
-    }
-    const getIconForMovie = (movie: movieDataType) => {
-        const isFav = favArray.some(m => m.movieName === movie.movieName);
-       
-        return isFav ? "favourite_icon.png" : "unfavourite_icon.png";
+    //         console.log(newFavs)
+            
+    //     } else {
+    //         const newFavs = favArray.filter((m) => m.movieName !== movieName);
+    //         setFavArray(newFavs);
+    //         console.log(newFavs)
+    //     }
+    // }
+    // const getIconForMovie = (movie: movieDataType) => {
         
-    };
+    //     const isFav = favArray.some(m => m.movieName === movie.movieName);
+    //    console.log(isFav)
+       
+    //     return isFav ? "favourite_icon.png" : "unfavourite_icon.png";
+        
+    // };
+
+
+
     return (
         <>
 
-        <div className="flex bg-blue-50 justify-evenly p-8">
+        <div className="flex  bg-blue-50 justify-evenly p-8">
             <div className="relative inline-block">
                 <button className="bg-gray-800 text-white cursor-pointer p-6 min-w-[150px] text-[20px] font-bold rounded-2xl " onClick={handleFilter}>
                     Filter By Genre
@@ -66,11 +78,11 @@ const Movie = () => {
             </div>
             <button className="bg-gray-800 text-white cursor-pointer p-6 min-w-[150px] text-[20px] font-bold rounded-2xl" onClick={handleClear}>Back</button>
         </div>
-            <div className="flex flex-col lg:flex-row flex-wrap bg-gray-800">
-                {genreMovieList && genreMovieList.map((item: movieDataType, index: number) => <MovieDescription key={index} {...item} handleIcon={getIconForMovie(item)} addFav={assignFav} />)}
+            <div className="flex md:flex-row flex-wrap bg-gray-800">
+                {genreMovieList && genreMovieList.map((item: movieDataType, index: number) => <MovieDescription key={index} movie={item} favMovie={isActive} favSelected={assignFav}/>)}
 
                 {!genreMovieList &&
-                    moviedata.map((item: movieDataType, index: number) => <MovieDescription key={index} {...item} handleIcon={getIconForMovie(item)} addFav={assignFav} />)
+                    moviedata.map((item: movieDataType, index: number) => <MovieDescription key={index} movie={item} favMovie={isActive} favSelected={assignFav}/>)
                 }
             </div>
 
