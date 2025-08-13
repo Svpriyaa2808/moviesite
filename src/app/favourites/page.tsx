@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from "react";
-import { movieDataType } from "../utils/types";
-import MovieDescription from "../components/Movie/MovieDescription";
+import { movieDataType } from "../../utils/types";
+import MovieDescription from "../../components/Movie/MovieDescription";
 
 const Favourites = () => {
   const [fav, setFav] = useState<movieDataType | null>(null);

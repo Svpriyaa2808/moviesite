@@ -1,10 +1,9 @@
 'use client'
 import { useEffect, useState } from "react"
-import MovieDescription from "../components/Movie/MovieDescription"
-import { FilterByGenre, filteredGenres, moviedata } from "../data/movieData"
-import { movieDataType } from "../utils/types"
-import Favourites from "../favourites/page"
-import { FavArrayList } from "@/app/data/movieData"
+import MovieDescription from "../../components/Movie/MovieDescription"
+import { FilterByGenre, filteredGenres, moviedata } from "../../data/movieData"
+import { movieDataType } from "../../utils/types"
+import { FavArrayList } from "@/data/movieData"
 
 const Movie = () => {
     const [filterSelected, setFilterSelected] = useState<null | string[]>(null)
