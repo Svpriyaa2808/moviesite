@@ -1,6 +1,6 @@
 'use client'
 
-import { movieDataType } from "@/app/utils/types"
+import { movieDataType } from "@/utils/types"
 import { useState } from "react";
 
 
