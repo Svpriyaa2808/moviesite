@@ -35,9 +35,8 @@ const MovieDescription = ({ movie, favSelected, favMovie }: MovieDescriptionProp
         setDisplayDescription(true)
     }
 
- 
-
     const isFavourite = favMovie?.movieName === movie.movieName
+   
     return (
         <>
             <div data-testid="movie" className="flex-[45%] m-4 flex flex-col align-center md:flex-row  rounded-4xl items-center bg-blue-50  p-4">
@@ -52,7 +51,7 @@ const MovieDescription = ({ movie, favSelected, favMovie }: MovieDescriptionProp
                     <p className="text-[22px] mt-4">Genre:{movie.genre}</p>
                 </div>
                 <div className="flex-[20%]">
-                    <img className={`w-[25%] sm:w-[35%] h-[auto] cursor-pointer m-auto `} onClick={() => favSelected(movie)} src={isFavourite ? "favourite_icon.png" : "unfavourite_icon.png"} alt="heart_icon"></img>
+                    <img className={`w-[25%] sm:w-[35%] h-[auto] cursor-pointer m-auto `} onClick={() => favSelected(movie)} src={isFavourite ? "favourite_icon.png" : "unfavourite_icon.png"} alt={isFavourite ? `favourite_icon.png ${movie.movieName}` : `unfavourite_icon.png ${movie.movieName}`}></img>
                 </div>
             </div>
             {displayDescription && (
