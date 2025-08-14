@@ -40,7 +40,7 @@ const MovieDescription = ({ movie, favSelected, favMovie }: MovieDescriptionProp
         <>
             <div data-testid="movie" className="flex-[45%] m-4 flex flex-col align-center md:flex-row  rounded-4xl items-center bg-blue-50  p-4">
                 <div className="flex-[20%]">
-                    <img className={`w-[50%] sm:w-[100%] h-[auto] m-auto sm:ml-8 transition-transform duration-500 ${rotate ? "rotate-360" : ""}`} 
+                    <img data-testid="movie-icon" className={`w-[50%] sm:w-[100%] h-[auto] m-auto sm:ml-8 transition-transform duration-500 ${rotate ? "rotate-360" : ""}`} 
                     src={movie.icon} onMouseEnter={() => setRotate(true)} onMouseLeave={() => setRotate(false)}
                      alt={`${movie.movieName} ${rotate ? "rotated" : "not-rotated"}`} width={500} height={100} />
                 </div>
@@ -54,9 +54,9 @@ const MovieDescription = ({ movie, favSelected, favMovie }: MovieDescriptionProp
                 </div>
             </div>
             {displayDescription && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                <div data-testid="movie-description" className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white p-6 rounded-xl max-w-md w-full shadow-lg relative">
-                        <button
+                        <button aria-label="close-description"
                             onClick={() => setDisplayDescription(false)}
                             className="absolute top-2 right-2 text-gray-500 hover:text-black text-xl">
                             &times;
