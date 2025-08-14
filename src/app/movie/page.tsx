@@ -31,7 +31,7 @@ const Movie = () => {
         <>
 
         <div className="flex  bg-blue-50 justify-evenly p-8">
-            <GenreOptions filteredGenres={filteredGenres} onGenreSelect={chosenGenre} />
+            <GenreOptions genresArray={filteredGenres} onGenreSelect={chosenGenre} />
             <BackButton onClear={handleClear} />
         </div>
             <div className="flex md:flex-row flex-wrap bg-gray-800">

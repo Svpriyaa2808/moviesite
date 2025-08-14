@@ -7,7 +7,6 @@
         clicked = true
     }
         render(<BackButton onClear={handleClear}/>)
-
         const backButton = screen.getByRole("button",{name:"Back"})
         expect(backButton).toBeInTheDocument()
         fireEvent.click(backButton)
