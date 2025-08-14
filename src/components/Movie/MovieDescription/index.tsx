@@ -35,8 +35,6 @@ const MovieDescription = ({ movie, favSelected, favMovie }: MovieDescriptionProp
         setDisplayDescription(true)
     }
 
- 
-
     const isFavourite = favMovie?.movieName === movie.movieName
     return (
         <>

@@ -179,4 +179,4 @@ export const FavArrayList = (chosenitem:string):movieDataType[] => {
     return moviedata.filter((item) => item.movieName === chosenitem )
 }
 
-console.log(FilterByGenre("Romantic"))
+
