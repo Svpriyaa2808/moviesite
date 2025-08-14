@@ -1,6 +1,7 @@
-import {render,screen,fireEvent} from '@testing-library/react'
+import {render,screen,fireEvent, within} from '@testing-library/react'
 import Movie from '@/app/movie/page'
 import { moviedata,filteredGenres, FilterByGenre } from '@/data/movieData'
+import Favourites from '@/app/favourites/page'
 
 describe("Test the element to be present on page load ",()=> {
     test("test the number of movie to be present on page load",()=>{
@@ -13,15 +14,37 @@ describe("Test the element to be present on page load ",()=> {
     test("That filter button is present",()=>{
         render(<Movie />)
 
-        const filterButton = screen.getByRole("button",{name:"Filter By Genre"})
-        expect(filterButton).toBeInTheDocument()
     }),
 
-    test("That back button is present",()=>{
+        test("That filter button is present", () => {
+            render(<Movie />)
+
+            const filterButton = screen.getByRole("button", { name: "Filter By Genre" })
+            expect(filterButton).toBeInTheDocument()
+        }),
+
+        test("That back button is present", () => {
+            render(<Movie />)
+
+            const backButton = screen.getByRole("button", { name: "Back" })
+            expect(backButton).toBeInTheDocument()
+        })
+})
+
+describe("To check if the data matches exactly with the the dataset", () => {
+    test("If the data is rendered is in coherence with the dataset", () => {
         render(<Movie />)
 
-        const backButton = screen.getByRole("button",{name:"Back"})
-        expect(backButton).toBeInTheDocument()
+        let allMovieData = screen.getAllByTestId("movie")
+        expect(allMovieData.length).toBe(moviedata.length)
+
+        allMovieData.forEach((movie, index) => {
+            let movieDetail = moviedata[index];
+
+            expect(within(movie).getByText(movieDetail.movieName)).toBeInTheDocument()
+            expect(within(movie).getByText(`Year:${movieDetail.releaseYear}`)).toBeInTheDocument();
+            expect(within(movie).getByText(`Genre:${movieDetail.genre}`)).toBeInTheDocument()
+        })
     })
 })
 
@@ -134,5 +157,56 @@ describe("Test the filter button and genre selection",() =>{
         expect(genreList.length).toBe(0)
 })
 
+describe("To check when the favourite icon is clicked, icon is changed", () => {
+    test("On clicking the Fav icon, icon should change", () => {
+        render(<Movie />)
 
+        let allMovieData = screen.getAllByTestId("movie")
+        expect(allMovieData.length).toBe(moviedata.length)
+
+        allMovieData.forEach((movie, index) => {
+            let movieDetail = moviedata[index];
+
+            let favIcon = within(movie).getByAltText(`unfavourite_icon.png ${movieDetail.movieName}`);
+            expect(favIcon).toBeInTheDocument()
+            expect(favIcon).toHaveAttribute("src", "unfavourite_icon.png");
+
+            fireEvent.click(favIcon)
+            expect(favIcon).toHaveAttribute("src", "favourite_icon.png");
+            expect(favIcon).toHaveAttribute("alt", `favourite_icon.png ${movieDetail.movieName}`)
+
+        })
+    })
+})
+
+describe("To check when the favourite icon is clicked, the corresponding fav movie is displayed in Favourite page ", () => {
+    test("On clicking the Fav icon, Favourite movie must be captured in Favourties page", () => {
+        render(<Movie />)
+        let movieDetail = moviedata[0];
+
+        let allMovieData = screen.getAllByTestId("movie")
+        expect(allMovieData.length).toBe(moviedata.length)
+
+        let firstData = allMovieData[0];
+        expect(within(firstData).getByText(movieDetail.movieName)).toBeInTheDocument()
+
+        let favIcon = within(firstData).getByAltText(`unfavourite_icon.png ${movieDetail.movieName}`);
+        expect(favIcon).toBeInTheDocument()
+        expect(favIcon).toHaveAttribute("src", "unfavourite_icon.png");
+
+        fireEvent.click(favIcon)
+        expect(favIcon).toHaveAttribute("src", "favourite_icon.png");
+        expect(favIcon).toHaveAttribute("alt", `favourite_icon.png ${movieDetail.movieName}`)
+
+        render(<Favourites />)
+     
+        expect(within(firstData).getByText(movieDetail.movieName)).toBeInTheDocument()
+        expect(within(firstData).getByRole("heading",{level:4})).toHaveTextContent("The Conjuring")
+
+        let favMovieDetail=screen.getByTestId("fav_movie")
+        expect(within(favMovieDetail).getByRole("heading",{level:4})).toHaveTextContent(movieDetail.movieName)
+        expect(within(favMovieDetail).getByRole("heading",{level:4})).toHaveTextContent("The Conjuring")
+
+    })
+})
 
