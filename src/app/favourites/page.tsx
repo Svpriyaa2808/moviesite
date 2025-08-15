@@ -18,7 +18,7 @@ const Favourites = () => {
       <div className="bg-gray-800 grow ">
       {fav ? (
         
-        <div className="flex-[45%] mb-5 flex flex-col align-center  max-w-[50%] m-auto md:flex-row  rounded-4xl items-center bg-blue-50  ">
+        <div data-testid="fav_movie" className="flex-[45%] mb-5 flex flex-col align-center  max-w-[50%] m-auto md:flex-row  rounded-4xl items-center bg-blue-50  ">
           <div className="flex-[20%]">
             <img className="w-[50%] sm:w-[100%] h-[auto] m-auto sm:ml-8" src={fav.icon} alt={fav.movieName} width={500} height={100} />
           </div>
