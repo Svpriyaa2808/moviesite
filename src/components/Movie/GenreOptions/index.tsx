@@ -21,7 +21,7 @@ const GenreOptions = ({ genresArray, onGenreSelect}: MovieFilterProps) => {
 
     return (
         
-            <div className="relative inline-block">
+            <div className="m-2 relative inline-block">
                 <button
                 className="bg-gray-800 text-white cursor-pointer p-6 min-w-[150px] text-[20px] font-bold rounded-2xl" onClick={handleFilterToggle}>
                     Filter By Genre
