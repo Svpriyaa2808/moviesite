@@ -20,7 +20,7 @@ describe("Test the element to be present on page load ",()=> {
     test("That back button is present",()=>{
         render(<Movie />)
 
-        const backButton = screen.getByRole("button",{name:"Back"})
+        const backButton = screen.getByRole("button",{name:"Clear Filter"})
         expect(backButton).toBeInTheDocument()
     })
 })
@@ -108,11 +108,11 @@ describe("Test the filter button and genre selection",() =>{
         expect(allMovies.length).toBe(moviedata.length)
         
         let filterButton = screen.getByRole("button",{name:"Filter By Genre"})
-        fireEvent.click(filterButton)
+        expect(filterButton).toBeInTheDocument()
 
-        let backButton = screen.getByRole("button",{name:"Back"})
+        let backButton = screen.getByRole("button",{name:"Clear Filter"})
         expect(backButton).toBeInTheDocument()
-        
+        fireEvent.click(filterButton)
         let genreList = screen.queryAllByTestId("genre-options")    
         expect(genreList.length).toBe(filteredGenres.length)
 
@@ -125,8 +125,8 @@ describe("Test the filter button and genre selection",() =>{
         
         genreList = screen.queryAllByTestId("genre-options")    
         expect(genreList.length).toBe(0)
-//testong back button function
-        backButton = screen.getByRole("button",{name:"Back"})
+//testing back button function
+        backButton = screen.getByRole("button",{name:"Clear Filter"})
         fireEvent.click(backButton)
         allMovies = screen.getAllByTestId("movie")
         expect(allMovies.length).toBe(moviedata.length)

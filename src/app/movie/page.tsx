@@ -6,7 +6,7 @@ import { movieDataType } from "../../utils/types"
 import Favourites from "../popcornfacts/page"
 import { FavArrayList } from "@/data/movieData"
 import GenreOptions from "@/components/Movie/GenreOptions"
-import BackButton from "@/components/Movie/BackButton"
+import BackButton from "@/components/Movie/ClearFilter"
 
 const Movie = () => {
    
